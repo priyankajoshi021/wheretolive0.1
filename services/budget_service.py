@@ -1,11 +1,14 @@
 from sqlmodel import Session, select
 from models.city import City, CityMetric
-
+from sqlmodel import Session, select
+from sqlalchemy import func
 
 def calculate_budget(city_name: str, salary: float, family: int, session: Session):
 
     city = session.exec(
-        select(City).where(City.name == city_name)
+        select(City).where(
+            func.lower(City.name) == city_name.lower()
+            )
     ).first()
 
     if not city:

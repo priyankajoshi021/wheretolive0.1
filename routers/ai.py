@@ -5,6 +5,7 @@ from database import get_session
 from models.city import City , CityMetric 
 from services.llm_service import generate_comparison_summary , generate_recommendation
 
+
 router = APIRouter(prefix="/ai", tags=["AI"])
 
 @router.post("/summary")
